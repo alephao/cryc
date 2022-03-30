@@ -1,0 +1,1 @@
+export { useEnsProfile } from "./use-ens-profile"
