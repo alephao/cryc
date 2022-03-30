@@ -1,6 +1,6 @@
 {
   "name": "@cryc/use-ens-profile",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "React hook to get ens data",
   "author": "Aleph Retamal",
   "license": "MIT",
