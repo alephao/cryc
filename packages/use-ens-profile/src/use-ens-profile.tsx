@@ -30,7 +30,10 @@ const fetchEnsAvatar = async (ens: string) => {
 }
 
 const fetchMetadata = async (web3: Web3Provider, wallet: string) => {
-  const ens = await web3.lookupAddress(wallet)
+  let ens: string | null = null
+  try {
+    ens = await web3.lookupAddress(wallet)
+  } catch {}
   if (ens) {
     let truncatedEns = ens
     if (ens.length > 23) {
