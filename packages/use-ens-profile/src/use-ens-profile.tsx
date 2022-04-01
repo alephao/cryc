@@ -9,7 +9,7 @@ const trimmedAddress: (account: string) => string = (account) => {
   return [start, '...', end].join('')
 }
 
-const makeIdentiicon = (wallet: string) => {
+const makeIdenticon = (wallet: string) => {
   const addr = wallet.slice(2, 10)
   const seed = parseInt(addr, 16)
   const el = jazzicon(28, seed) as HTMLElement
@@ -43,9 +43,9 @@ const fetchMetadata = async (web3: Web3Provider, wallet: string) => {
     if (ensAvatarUrl) {
       return { name: truncatedEns, avatarUrl: ensAvatarUrl }
     }
-    return { name: truncatedEns, avatarUrl: makeIdentiicon(wallet) }
+    return { name: truncatedEns, avatarUrl: makeIdenticon(wallet) }
   }
-  return { name: trimmedAddress(wallet), avatarUrl: makeIdentiicon(wallet) }
+  return { name: trimmedAddress(wallet), avatarUrl: makeIdenticon(wallet) }
 }
 
 export const useEnsProfile = () => {
