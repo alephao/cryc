@@ -1,6 +1,6 @@
 {
   "name": "@cryc/tx-modal",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React hook to get ens data",
   "author": "Aleph Retamal",
   "license": "MIT",
@@ -40,7 +40,7 @@
   },
   "gitHead": "a7d0e831aac5a6b266cbf97590fd80f5ab0f99ca",
   "dependencies": {
-    "@cryc/use-contract-tx": "^0.0.1",
+    "@cryc/use-contract-tx": "^0.0.2",
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.6"
   }
