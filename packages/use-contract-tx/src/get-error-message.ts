@@ -15,24 +15,29 @@ export type ContractError = {
   message: string;
 };
 
-export const getErrorMessage = (err: any, contractError: ContractErrors) => {
+export const getErrorMessage = (err: any, contractError: any) => {
+  // For custom errors, the error sighash is on err.error.data.originalError.data
   if (
     err.error &&
     err.error.data &&
     err.error.data.originalError &&
     err.error.data.originalError.data
   ) {
-    if (typeof err.error.data.originalError.data === "string") {
-      const aDogsError = contractError[err.error.data.originalError.data];
-      if (aDogsError) {
-        return aDogsError.message;
+    if (typeof err.error.data.originalError.data === 'string') {
+      const customError = contractError[err.error.data.originalError.data]
+      if (customError) {
+        return customError.message
       }
     }
   }
 
-  if (err.data && err.data.message) return err.data.message as string;
+  if (err.error && err.error.data && err.error.data.message) return err.error.data.message as string
 
-  if (err.message) return err.message as string;
+  // When estimateGas fail, error is in err.error.message
+  if (err.error && err.error.message) return err.error.message as string
 
-  return JSON.stringify(err);
-};
+  // When transaction is rejected error is in err.message
+  if (err.message) return err.message as string
+
+  return JSON.stringify(err)
+}
